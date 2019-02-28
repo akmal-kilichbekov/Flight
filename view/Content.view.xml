@@ -1,0 +1,70 @@
+<mvc:View
+    controllerName="rroot.controller.Content"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <mvc:XMLView viewName="rroot.view.HeadToolBar"/>
+    <Panel>
+        <content>
+            <Breadcrumbs currentLocationText="Airline List">
+                <Link press="onPress" text="Home"/>
+            </Breadcrumbs>
+        </content>
+        <content>
+            <Table
+                    id="productsID"
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    inset="false"
+                    items="{
+             path : 'oData>/FlightScarrSet',
+             sorter : {
+                path : 'Carrid',
+                group : true
+             }
+            }">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Airline List"/>
+                        <ToolbarSpacer/>
+                        <SearchField width="50%" search="onFilterInvoices"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Airline" />
+                    </Column>
+                    <Column>
+                        <Text text="Flight Number" />
+                    </Column>
+                    <Column>
+                        <Text text="Airline Currency" />
+                    </Column>
+                    <Column>
+                        <Text text="URL" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                           <ObjectIdentifier
+                                    title="{oData>Carrid}"/>
+                            <Text
+                                    text="{oData>Carrname}"/>
+                            <Text
+                                    text="{oData>Currcode}"/>
+                            <Text
+                                    text="{oData>Url}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <HBox
+                    class="sapUiResponsiveMargin"
+                    width="auto">
+                <Button text="Create" press="onCreate"></Button>
+                <Button text="Update" press="onChange"></Button>
+                <Button text="Delete" press="onDelete"></Button>
+            </HBox>
+        </content>
+    </Panel>
+</mvc:View>

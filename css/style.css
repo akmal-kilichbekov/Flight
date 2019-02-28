@@ -1,0 +1,18 @@
+.loginImage{
+    background-image: url("http://www.aastravelsntours.com/wp-content/uploads/2018/05/First-Travel.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.nameInput {
+    font-style: italic;
+    font-size: medium;
+}
+
+.passwordInput {
+    font-style: italic;
+    font-size: medium;
+}

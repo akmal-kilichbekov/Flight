@@ -1,0 +1,36 @@
+<mvc:View
+        controllerName="rroot.controller.Login"
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:f="sap.ui.layout.form"
+        displayBlock="true">
+    <Panel class="loginImage"
+           height="100%">
+     <f:SimpleForm editable="true"
+                   layout="ResponsiveGridLayout"
+                   title="Login Form"
+                   labelSpanXL="3"
+                   labelSpanL="3"
+                   labelSpanM="3"
+                   labelSpanS="12"
+                   adjustLabelSpan="false"
+                   emptySpanXL="4"
+                   emptySpanL="4"
+                   emptySpanM="4"
+                   emptySpanS="0"
+                   columnsXL="1"
+                   columnsL="1"
+                   columnsM="1"
+                   singleContainerFullSize="false">
+         <f:content>
+             <Label class="nameInput" text="Name" />
+             <Input id="name"/>
+             <Label class="passwordInput" text="Password" />
+             <Input type="Password" id="password"/>
+             <Button type="Navigation"
+                     text="Submit"
+                     press="onSubmit" />
+         </f:content>
+     </f:SimpleForm>
+   </Panel>
+</mvc:View>
