@@ -34,11 +34,13 @@
                         <Text text="Airline Currency" />
                     </Column>
                     <Column>
-                        <Text text="URL" />
+                        <Text text="URL" />                        
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem>
+                    <ColumnListItem
+                        type="Navigation"
+				        press="onPress">
                         <cells>
                             <ObjectIdentifier
                                     title="{oData>Carrid}"/>
@@ -46,8 +48,10 @@
                                     text="{oData>Carrname}"/>
                             <Text
                                     text="{oData>Currcode}"/>
-                            <Text
-                                    text="{oData>Url}"/>
+                            <Link
+                                text="{oData>Url}"
+                                emphasized="true"
+                                href="https://{oData>Url}" />        
                         </cells>
                     </ColumnListItem>
                 </items>
@@ -58,72 +62,13 @@
                 class="sapUiResponsiveMargin"
                 width="auto"
                 inset="false"
-                items="{oData>/FlightSpfliSet}">
-                <headerToolbar>
-                    <Toolbar>
-                        <Link
-                            type="Navigation"
-                            press="onSchema"
-                            text="Flight Schedule"
-                            subtle="true"/>
-                    </Toolbar>
-                </headerToolbar>
-                <columns>
-                    <Column>
-                        <Text text="Airline Code" />
-                    </Column>
-                    <Column>
-                        <Text text="Flight Connection Number" />
-                    </Column>
-                    <Column>
-                        <Text text="Departure country" />
-                    </Column>
-                    <Column>
-                        <Text text="Departure city" />
-                    </Column>
-                    <Column>
-                        <Text text="Departure airport" />
-                    </Column>
-                    <Column>
-                        <Text text="Arrival country" />
-                    </Column>
-                    <Column>
-                        <Text text="Arrival city" />
-                    </Column>
-                    <Column>
-                        <Text text="Destination airport" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem>
-                        <cells>
-                            <ObjectIdentifier
-                                    title="{oData>Carrid}"/>
-                            <Text
-                                    text="{oData>Connid}"/>
-                            <Text
-                                    text="{oData>Countryfr}"/>
-                            <Text
-                                    text="{oData>Cityfrom}"/>
-                            <Text
-                                    text="{oData>Airpfrom}"/>
-                            <Text
-                                    text="{oData>Countryto}"/>
-                            <Text
-                                    text="{oData>Cityto}"/>
-                            <Text
-                                    text="{oData>Airpto}"/>
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
-        </content>
-        <content>
-            <Table
-                    class="sapUiResponsiveMargin"
-                    width="auto"
-                    inset="false"
-                    items="{oData>/FlightSflightSet}">
+                items="{
+                    path: 'oData>/FlightSflightSet',
+                    sorter: {
+                        path: 'Carrid',
+                        group : true
+                    }
+                }">
                 <headerToolbar>
                     <Toolbar>
                         <Link
@@ -147,10 +92,10 @@
                         <Text text="Airfare" />
                     </Column>
                     <Column>
-                        <Text text="Airline local currency" />
+                        <Text text="Plane Type" />
                     </Column>
                     <Column>
-                        <Text text="Plane Type" />
+                        <Text text="Seat association" />
                     </Column>
                     <Column>
                         <Text text="Maximum capacity economy class" />
@@ -160,7 +105,9 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem>
+                    <ColumnListItem
+                       type="Navigation"
+				       press="onPress">
                         <cells>
                             <ObjectIdentifier
                                     title="{oData>Carrid}"/>
@@ -168,20 +115,28 @@
                                     text="{oData>Connid}"/>
                             <Text
                                     text="{oData>Fldate}"/>
+                            <ObjectNumber 
+                               		number="{
+                                    parts: [{path: 'oData>Price'}, {path: 'view>/currency'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {
+                                        showMeasure: false
+                                    }
+                                }"
+                                unit="{view>/currency}"
+                                state="{= ${oData>Price} > 1000 ? 'Error' : 'Success' }" />    
                             <Text
-                                    text="{oData>Price}"/>
+                                    text="{oData>Planetype}"/>                 
                             <Text
-                                    text="{oData>Currency}"/>
+                                    text="{oData>Seatsocc}"/>
                             <Text
-                                    text="{oData>Planetype}"/>
+                                    text="{oData>Seatsmax}"/>                
                             <Text
-                                    text="{oData>Seatsmax}"/>
-                            <Text
-                                    text="{oData>SeatsmaxB}"/>
+                                    text="{oData>SeatsmaxB}"/>         
                         </cells>
                     </ColumnListItem>
                 </items>
             </Table>
-        </content>
+        </content>        
     </Panel>
 </mvc:View>

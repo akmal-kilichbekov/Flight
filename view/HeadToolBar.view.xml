@@ -23,13 +23,13 @@
                         shrinkable="true" />
             </layoutData>
             <items>
-                <IconTabFilter text="Documentation">
+                <IconTabFilter text="Order tickets">
                 </IconTabFilter>
-                <IconTabFilter text="Explored">
+                <IconTabFilter text="Prices">
                 </IconTabFilter>
-                <IconTabFilter text="API Reference">
+                <IconTabFilter text="About us">
                 </IconTabFilter>
-                <IconTabFilter text="Demo Apps">
+                <IconTabFilter text="Contacts">
                 </IconTabFilter>
             </items>
         </IconTabHeader>
@@ -40,7 +40,7 @@
             </layoutData>
         </ToolbarSpacer>
 
-        <Button text="John Doe" type="Transparent" press="onUserNamePress">
+        <Button text="Log out" type="Transparent" press="onUserNamePress" tooltip="Log out button">
             <layoutData>
                 <OverflowToolbarLayoutData priority="NeverOverflow" />
             </layoutData>

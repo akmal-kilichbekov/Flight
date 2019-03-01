@@ -1,31 +1,32 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     'sap/m/Popover',
-    'sap/m/Button'
-], function (Controller, Popover, Button) {
+    'sap/m/Button',
+    "sap/m/MessageToast",
+], function(Controller, Popover, Button, MessageToast) {
     "use strict";
     return Controller.extend("rroot.controller.HeadToolBar", {
-       onHomePress: function () {
-            var iconTabHeader = this.byId('iconTabHeader');
-            iconTabHeader.setSelectedKey('invalidKey');
-
-            var label = this.byId('labelId');
-            label.setText('Home Screen');
+        onHomePress: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("login");
         },
 
-        onSelectTab: function (event) {
+        onSelectTab: function(event) {
             var label = this.byId('labelId');
             var tab = event.getParameter('item');
 
-            label.setText(tab.getText());
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
+            var sMsg = oBundle.getText("notWorking");
+            // show message
+            MessageToast.show(sMsg);
         },
 
-        onUserNamePress: function (oEvent) {
-           var that = this;
+        onUserNamePress: function(oEvent) {
+            var that = this;
             var oPopover = new Popover({
                 showHeader: false,
                 placement: sap.m.PlacementType.Bottom,
-                content:[
+                content: [
                     new Button({
                         text: 'Profile',
                         type: sap.m.ButtonType.Transparent
@@ -33,7 +34,7 @@ sap.ui.define([
                     new Button({
                         text: 'Logout',
                         type: sap.m.ButtonType.Transparent,
-                        press: function (oEvent) {
+                        press: function(oEvent) {
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                             oRouter.navTo("login");
                         }
@@ -43,5 +44,5 @@ sap.ui.define([
 
             oPopover.openBy(oEvent.getSource());
         },
-     });
+    });
 });
