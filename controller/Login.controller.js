@@ -7,7 +7,7 @@ sap.ui.define([
         onSubmit : function(oEvent){
             var name = this.byId("name");
             var pass = this.byId("password");
-            if (name.mProperties.value == "{i18n>login}" && pass.mProperties.value == "{i18n>password}") {
+            if (name.mProperties.value == "admin" && pass.mProperties.value == "1234") {
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("application");
             }else{
